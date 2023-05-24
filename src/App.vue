@@ -19,9 +19,20 @@ export default{
                 params:{
                     num: '20',
                     offset: '0',
+                    
                 }
             })
-            .then(renspose => this.state.listCard = renspose.data.result);
+            .then(renspose => this.state.listCard = renspose.data.data);
+            console.log('il mio array',  this.state.listCard)
+        },
+        axiosSelect(){
+            axios
+            .get('https://db.ygoprodeck.com/api/v7/cardinfo.php',{
+                params:{
+                    archetype: this.state.choise
+                }
+            })
+            .then(renspose => this.state.listCard = renspose.data.data);
             console.log('il mio array',  this.state.listCard)
         }
     },
@@ -37,7 +48,8 @@ export default{
         <h1>Yu-gi-ho Api</h1>
     </header>
     <main>
-        <search />
+        <search @choise="axiosSelect"/>
+   
         <cardlist />
 
     </main>

@@ -15,7 +15,7 @@ export default {
         <card 
         v-for="item in state.listCard" 
         :key="item.id"
-        :img="item.card_images.image_url"
+        :img="item.card_images[0].image_url"
         :title="item.name"
         :type="item.archetype"
         />
